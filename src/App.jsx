@@ -3,10 +3,17 @@ import { useState } from "react";
 import "./App.css";
 import Todo from "./components/Todo";
 
+
+
+
 function App(props) {
-  const [count, setCount] = useState(0);
+  const taskList = props.tasks?.map((task) => (
+    <Todo id={task.id} name={task.name} completed={task.completed} />
+  ));
+  
 
   return (
+    
     <>
       <div className="todoapp stack-large">
         <h1>TodoMatic</h1>
@@ -54,9 +61,7 @@ function App(props) {
           className="todo-list stack-large stack-exception"
           aria-labelledby="list-heading"
         >
-          <Todo name="Eat" completed/>
-          <Todo name="Sleep" />
-          <Todo name="Repeat" />
+        {taskList}
         </ul>
       </div>
     </>
